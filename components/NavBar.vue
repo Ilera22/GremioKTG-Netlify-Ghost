@@ -1,27 +1,29 @@
 <template>
   <div id="app">
     <v-layout row justify-center>
-      <v-app-bar app dark color="blue-grey darken-1" class="hidden-sm-and-down">
-        <v-app-bar-title>Title</v-app-bar-title>
+      <v-responsive v-if="$vuetify.breakpoint.smAndDown">
+        <v-app-bar app color="red">
+          <v-app-bar-title>Mobile</v-app-bar-title>
+          <v-spacer></v-spacer>
+          <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        </v-app-bar>
+      </v-responsive>
 
-        <v-spacer></v-spacer>
-        <v-app-bar-items>
-          <v-btn
-            v-for="item in nav"
-            :key="item.icon"
-            :to="item.to"
-            :title="item.title"
-            flat
-            >{{ item.text }}</v-btn
-          >
-        </v-app-bar-items>
-      </v-app-bar>
-
-      <v-app-bar app color="red" class="hidden-md-and-up">
-        <v-app-bar-title>Mobile</v-app-bar-title>
-        <v-spacer></v-spacer>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      </v-app-bar>
+      <v-responsive v-else>
+        <v-app-bar app dark color="blue-grey darken-1">
+          <v-app-bar-title>Desktop</v-app-bar-title>
+          <v-spacer></v-spacer>
+          <v-app-bar-items>
+            <v-btn
+              v-for="item in nav"
+              :key="item.icon"
+              :to="item.to"
+              :title="item.title"
+              >{{ item.text }}</v-btn
+            >
+          </v-app-bar-items>
+        </v-app-bar>
+      </v-responsive>
     </v-layout>
   </div>
 </template>
